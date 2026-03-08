@@ -11,27 +11,20 @@
 <script>
     (function() {
         const ACCESS_KEY = "DPSFILES@069";
-        
-        // 1. We wrap this in a small timeout (50ms) to ensure 
-        // the page is fully ready to handle a new prompt on refresh.
-        setTimeout(() => {
-            const userEntry = window.prompt("CRITICAL: System Authentication Required.\n\nEnter Access Key to decrypt records:");
+        const userEntry = window.prompt("Enter Access Key:");
 
-            // 2. Check if user clicked "Cancel" or left it blank
-            if (userEntry === null || userEntry === "") {
-                alert("Entry required. Refresh to try again.");
-                return; // Stop execution here; don't redirect yet.
-            }
-
-            // 3. If they actually typed something and it's WRONG
-            if (userEntry !== ACCESS_KEY) {
-                alert("ACCESS DENIED. Redirecting to secure gateway...");
-                window.location.replace("https://www.google.com"); 
-            } else {
-                // 4. Success logic
-                alert("Access Granted.");
-            }
-        }, 50);
+        if (userEntry === null || userEntry === "") {
+            alert("Entry required.");
+	    window.location.href = "https://dps-epstein-files.vercel.app";
+            // No redirect here, just stops.
+        } else if (userEntry !== ACCESS_KEY) {
+            // THE FIX: Standard alert will block the next line
+            alert("ACCESS DENIED. Redirecting to secure gateway...");
+            window.location.href = "https://www.google.com";
+        } else {
+            // Correct key logic
+            console.log("Success");
+        }
     })();
 </script>
 
@@ -242,6 +235,7 @@
     </script>
 </body>
 </html>
+
 
 
 
