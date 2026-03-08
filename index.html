@@ -19,7 +19,7 @@
             // No redirect here, just stops.
         } else if (userEntry !== ACCESS_KEY) {
             // THE FIX: Standard alert will block the next line
-            alert("ACCESS DENIED. Redirecting to secure gateway...");
+            alert("Wrong Password, ACCESS DENIED. Redirecting...");
             window.location.href = "https://www.google.com";
         } else {
             // Correct key logic
@@ -235,6 +235,7 @@
     </script>
 </body>
 </html>
+
 
 
 
