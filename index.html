@@ -15,7 +15,7 @@
 
         if (userEntry === null || userEntry === "") {
             alert("Entry required.");
-	    window.location.href = "https://dps-epstein-files.vercel.app";
+	    window.location.reload();
             // No redirect here, just stops.
         } else if (userEntry !== ACCESS_KEY) {
             // THE FIX: Standard alert will block the next line
@@ -235,6 +235,7 @@
     </script>
 </body>
 </html>
+
 
 
 
