@@ -8,17 +8,32 @@
     <link rel="manifest" href="data:application/manifest+json,{%22name%22:%22DPS%20Archive%22,%22short_name%22:%22DPS%22,%22start_url%22:%22.%22,%22display%22:%22standalone%22,%22background_color%22:%22%23000000%22,%22theme_color%22:%22%23000000%22}">
     <title>DPS SECRET FILES</title>
 
-    <script>
-        (function() {
-            const ACCESS_KEY = "DPSFILES@069"; // case sensetive
+<script>
+    (function() {
+        const ACCESS_KEY = "DPSFILES@069";
+        
+        // 1. We wrap this in a small timeout (50ms) to ensure 
+        // the page is fully ready to handle a new prompt on refresh.
+        setTimeout(() => {
             const userEntry = window.prompt("CRITICAL: System Authentication Required.\n\nEnter Access Key to decrypt records:");
 
-           if (userEntry === null || userEntry !== ACCESS_KEY) {
-                alert("ACCESS DENIED. Redirecting to secure gateway...");
-                window.location.href = "https://www.google.com";
+            // 2. Check if user clicked "Cancel" or left it blank
+            if (userEntry === null || userEntry === "") {
+                alert("Entry required. Refresh to try again.");
+                return; // Stop execution here; don't redirect yet.
             }
-        })();
-    </script>
+
+            // 3. If they actually typed something and it's WRONG
+            if (userEntry !== ACCESS_KEY) {
+                alert("ACCESS DENIED. Redirecting to secure gateway...");
+                window.location.replace("https://www.google.com"); 
+            } else {
+                // 4. Success logic
+                alert("Access Granted.");
+            }
+        }, 50);
+    })();
+</script>
 
     <style>
         :root { --bg: #000; --sidebar: #0d0d0d; --border: #222; --accent: #00ff41; --text-main: #eee; --header-h: 60px; }
@@ -227,6 +242,7 @@
     </script>
 </body>
 </html>
+
 
 
 
