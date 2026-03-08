@@ -7,27 +7,34 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="manifest" href="data:application/manifest+json,{%22name%22:%22DPS%20Archive%22,%22short_name%22:%22DPS%22,%22start_url%22:%22.%22,%22display%22:%22standalone%22,%22background_color%22:%22%23000000%22,%22theme_color%22:%22%23000000%22}">
     <title>DPS SECRET FILES</title>
-
+    <style>
+        /* 1. Encryption */
+        #gatekeeper { display: none; }
+        body { background-color: #000; color: white; } 
+    </style>
 <script>
-    (function() {
-        const ACCESS_KEY = atob("RFBTRklMRVNAMDY5");
-        const userEntry = window.prompt("Enter Access Key:");
+(function() {
+    // 1. Gateway
+    var _0x3e = [68, 80, 83, 70, 73, 76, 69, 83, 64, 48, 54, 57].map(c => String.fromCharCode(c)).join('');
+    
+    // 2. Main prompt
+    var _0x4c = window['\x70\x72\x6f\x6d\x70\x74']("CRITICAL: System Authentication Required.\n\nEnter Access Key to decrypt records:");
 
-        if (userEntry === null || userEntry === "") {
-            alert("Entry required.");
-	    window.location.reload();
-            // No redirect here, just stops.
-        } else if (userEntry !== ACCESS_KEY) {
-            // THE FIX: Standard alert will block the next line
-            alert("Wrong Password, ACCESS DENIED. Redirecting...");
-            window.location.href = "https://www.google.com";
-        } else {
-            // Correct key logic
-            console.log("Success");
-        }
-    })();
+    if (!_0x4c || _0x4c === "") {
+        // 3. if key === Null
+        alert('\x45\x6e\x74\x72\x79\x20\x72\x65\x71\x75\x69\x72\x65\x64\x2e');
+        window['\x6c\x6f\x63\x61\x74\x69\x6f\x6e']['\x72\x65\x6c\x6f\x61\x64']();
+    } else if (_0x4c !== _0x3e) {
+        // 4. if key === !access
+        alert('\x57\x72\x6f\x6e\x67\x20\x50\x61\x73\x73\x77\x6f\x72\x64\x2c\x20\x41\x43\x43\x45\x53\x53\x20\x44\x45\x4e\x49\x45\x44\x2e\x20\x52\x65\x64\x69\x72\x65\x63\x74\x69\x6e\x67\x2e\x2e\x2e');
+        window['\x6c\x6f\x63\x61\x74\x69\x6f\x6e']['\x68\x72\x65\x66'] = '\x68\x74\x74\x70\x73\x3a\x2f\x2f\x77\x77\x77\x2e\x67\x6f\x6f\x67\x6c\x65\x2e\x63\x6f\x6d';
+    } else {
+        // 5. Success
+        document.getElementById('gatekeeper').style.display = 'block';
+    }
+})();
 </script>
-
+	
     <style>
         :root { --bg: #000; --sidebar: #0d0d0d; --border: #222; --accent: #00ff41; --text-main: #eee; --header-h: 60px; }
         * { box-sizing: border-box; }
@@ -235,6 +242,7 @@
     </script>
 </body>
 </html>
+
 
 
 
